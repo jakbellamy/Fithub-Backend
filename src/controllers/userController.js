@@ -1,4 +1,4 @@
-const _ = require('lodash')
+
 const bcrypt = require('bcrypt')
 import {User} from '../models/userModel'
 import { userValidation } from '../validators/userValidation';
