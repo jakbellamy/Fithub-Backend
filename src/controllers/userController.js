@@ -1,6 +1,7 @@
 
 const bcrypt = require('bcrypt')
 import {User} from '../models/userModel'
+let _ = require('lodash');
 import { userValidation } from '../validators/userValidation';
 
 export const addNewUser = async (req, res) => {
