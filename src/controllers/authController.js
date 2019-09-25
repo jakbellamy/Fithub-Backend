@@ -7,7 +7,7 @@ export const authRequest = async (req, res) => {
     console.log(req.body)
     const {error} = authValidation(req.body)
     if(error) {
-        return res.send({msg: error, success: false})
+        return res.send({msg: error.details[0].message, success: false})
     }
 
     let user = await User.findOne({username: req.body.username})

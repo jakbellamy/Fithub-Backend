@@ -7,10 +7,10 @@ import { userValidation } from '../validators/userValidation';
 export const addNewUser = async (req, res) => {
 
     const {error} = userValidation(req.body)
-    if(error) return res.status(400).send(error.details[0].message)
+    if(error) res.send({msg: error.details[0].message, succes: false})
 
     let user = await User.findOne({username: req.body.username})
-    if(user) return res.status(400).send('username taken')
+    if(user) return res.send({msg: "Username Taken", success: false})
 
     user = new User(_.pick(req.body, ['name', 'username', 'password']))
 
@@ -20,7 +20,7 @@ export const addNewUser = async (req, res) => {
     await user.save()
 
     const token = user.generateAuthToken()
-    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'username', 'name',]))
+    res.send({token: token, user: user, success: true})
 }
 
 export const getUsers = (req, res) => {
