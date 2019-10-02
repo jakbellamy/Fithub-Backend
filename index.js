@@ -8,7 +8,7 @@ import workoutRoutes from './src/routes/workoutRoutes'
 
 
 const app = express()
-const PORT = 5000
+const PORT = 5001
 const cors = require('cors')
 
 app.use(cors())
@@ -33,6 +33,6 @@ app.get('/', (req, res) =>
     res.send(`Node and Express are running on port ${PORT}`)
 )
 
-app.listen(PORT, () => 
+app.listen(PORT, () =>
     console.log(`your server is running on port ${PORT}`)
 )
