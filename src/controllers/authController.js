@@ -4,7 +4,6 @@ import {User} from '../models/userModel'
 import { authValidation } from '../validators/authValidation';
 
 export const authRequest = async (req, res) => {
-    console.log(req.body)
     const {error} = authValidation(req.body)
     if(error) {
         return res.send({msg: error.details[0].message, success: false})
@@ -24,4 +23,3 @@ export const authRequest = async (req, res) => {
     res.send({token: token, user: user, success: true})
     console.log({token: token, user: user})
 }
-
